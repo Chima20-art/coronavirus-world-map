@@ -13,8 +13,14 @@ function App() {
         "https://services1.arcgis.com/0MSEUqKaxRlEPj5g/arcgis/rest/services/ncov_cases2_v1/FeatureServer/2/query?where=1%3D1&outFields=OBJECTID,Country_Region,Last_Update,Confirmed,Deaths,Recovered,Active,People_Tested,ISO3&outSR=4326&f=json"
       );
       response = await response.json();
-      setData(response.features);
-      console.log(response.features);
+
+      const myData = response.features.map((n) => {
+        const getCountryISO2 = require("country-iso-3-to-2");
+        console.log(getCountryISO2(n.attributes.ISO3));
+        return n.attributes;
+      });
+
+      setData(myData);
     }
     Fetch();
   }, []);
