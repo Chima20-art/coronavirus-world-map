@@ -15,6 +15,10 @@ function App() {
       );
       response = await response.json();
       const confirmedData = [];
+      const deathsData = [];
+      const activeData = [];
+      const recoveredData = [];
+
       response.features.forEach((item) => {
         var ISO2 = getCountryISO2(item.attributes.ISO3);
         if (ISO2 != undefined || ISO2 != null) {
@@ -22,9 +26,22 @@ function App() {
             country: ISO2,
             value: item.attributes.Confirmed,
           });
+          deathsData.push({
+            country: ISO2,
+            value: item.attributes.Deaths,
+          });
+          activeData.push({
+            country: ISO2,
+            value: item.attributes.Active,
+          });
+          recoveredData.push({
+            country: ISO2,
+            value: item.attributes.recovered,
+          });
         }
+        console.log(item.attributes);
       });
-      console.log(confirmedData);
+
       setData(confirmedData);
     }
     Fetch();
