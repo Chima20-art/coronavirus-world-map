@@ -51,13 +51,14 @@ function App() {
       {loading ? (
         <h1>loading...</h1>
       ) : (
-        <WorldMap
-          className={styles.map}
-          title="This is My Map"
-          size="lg"
-          data={data}
-          color="blue"
-        />
+        <div className={styles.map}>
+          <WorldMap
+            title="This is My Map"
+            size="responsive"
+            data={data}
+            color="blue"
+          />
+        </div>
       )}
     </div>
   );
