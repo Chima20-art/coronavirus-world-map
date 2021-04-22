@@ -46,20 +46,32 @@ function App() {
     }
     Fetch();
   }, []);
+
   return (
     <div>
-      {loading ? (
-        <h1>loading...</h1>
-      ) : (
-        <div className={styles.map}>
-          <WorldMap
-            title="This is My Map"
-            size="responsive"
-            data={data}
-            color="blue"
-          />
+      <div className={styles.buttons}>
+        <div>
+          <button>CASES </button>
         </div>
-      )}
+        <div>
+          <button>DEATHS </button>
+        </div>
+        <div>
+          <button>RECOVERED </button>
+        </div>
+        <div>
+          <button>ACTIVE </button>
+        </div>
+      </div>
+      <div>
+        {loading ? (
+          <h1>loading...</h1>
+        ) : (
+          <div className={styles.map}>
+            <WorldMap size="responsive" data={data} color="orange" />
+          </div>
+        )}
+      </div>
     </div>
   );
 }

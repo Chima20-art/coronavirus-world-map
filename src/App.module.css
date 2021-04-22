@@ -2,4 +2,9 @@
   display: flex;
   justify-content: center;
   text-align: center;
+  font-size: 40px;
+}
+.buttons {
+  display: flex;
+  flex-direction: row;
 }
