@@ -4,9 +4,13 @@ import { useState, useEffect } from "react";
 import getCountryISO2 from "country-iso-3-to-2";
 
 function App() {
-  const [loading, setLoading] = useState(false);
-  const [rawData, setRawData] = useState(null);
-  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  const [data, setData] = useState(null);
+  const [confirmedData, setConfirmedData] = useState([]);
+  const [deathsData, setDeathsData] = useState([]);
+  const [activeData, setActiveData] = useState([]);
+  const [recoveredData, setRecoveredData] = useState([]);
 
   useEffect(() => {
     async function Fetch() {
@@ -39,28 +43,50 @@ function App() {
             value: item.attributes.recovered,
           });
         }
-        console.log(item.attributes);
+        //console.log(item.attributes);
       });
 
       setData(confirmedData);
+      setConfirmedData(confirmedData);
+      setDeathsData(deathsData);
+      setActiveData(activeData);
+      setRecoveredData(recoveredData);
+      setLoading(false);
     }
     Fetch();
   }, []);
+
+  const onCases = () => {
+    setData(confirmedData);
+  };
+
+  const onDeaths = () => {
+    setData(deathsData);
+  };
+
+  const onRecovered = () => {
+    setData(recoveredData);
+    console.log(recoveredData);
+  };
+
+  const onActive = () => {
+    setData(activeData);
+  };
 
   return (
     <div>
       <div className={styles.buttons}>
         <div>
-          <button>CASES </button>
+          <button onClick={onCases}>CASES </button>
         </div>
         <div>
-          <button>DEATHS </button>
+          <button onClick={onDeaths}>DEATHS </button>
         </div>
         <div>
-          <button>RECOVERED </button>
+          <button onClick={onRecovered}>RECOVERED </button>
         </div>
         <div>
-          <button>ACTIVE </button>
+          <button onClick={onActive}>ACTIVE </button>
         </div>
       </div>
       <div>
