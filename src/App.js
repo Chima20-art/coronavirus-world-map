@@ -40,7 +40,7 @@ function App() {
           });
           recoveredData.push({
             country: ISO2,
-            value: item.attributes.recovered,
+            value: item.attributes.Recovered,
           });
         }
         //console.log(item.attributes);
