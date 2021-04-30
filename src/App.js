@@ -11,6 +11,7 @@ function App() {
   const [deathsData, setDeathsData] = useState([]);
   const [activeData, setActiveData] = useState([]);
   const [recoveredData, setRecoveredData] = useState([]);
+  const [clickedButton, setClickedButton] = useState("cases");
 
   useEffect(() => {
     async function Fetch() {
@@ -28,19 +29,19 @@ function App() {
         if (ISO2 != undefined || ISO2 != null) {
           confirmedData.push({
             country: ISO2,
-            value: item.attributes.Confirmed,
+            value: item?.attributes?.Confirmed ? item.attributes.Confirmed : -1,
           });
           deathsData.push({
             country: ISO2,
-            value: item.attributes.Deaths,
+            value: item?.attributes?.Deaths ? item.attributes.Deaths : -1,
           });
           activeData.push({
             country: ISO2,
-            value: item.attributes.Active,
+            value: item?.attributes?.Active ? item.attributes.Active : -1,
           });
           recoveredData.push({
             country: ISO2,
-            value: item.attributes.Recovered ? item.attributes.Recovered : -1,
+            value: item?.attributes?.Recovered ? item.attributes.Recovered : -1,
           });
         }
       });
@@ -57,27 +58,29 @@ function App() {
 
   const onCases = () => {
     setData(confirmedData);
+    setClickedButton("cases");
   };
 
   const onDeaths = () => {
     setData(deathsData);
+    setClickedButton("Deaths");
   };
 
   const onRecovered = () => {
     setData(recoveredData);
-    console.log(recoveredData);
+    setClickedButton("Recovered");
   };
 
   const onActive = () => {
     setData(activeData);
+    setClickedButton("Active");
   };
 
   const generateLabel = (country, isoCode, value, prefix, suffix) => {
-    //var newv = parseInt(value);
     if (value == -1) {
       return "No Data";
     }
-    return value;
+    return country + value;
   };
 
   return (
@@ -106,6 +109,7 @@ function App() {
               data={data}
               color="orange"
               tooltipTextFunction={generateLabel}
+              title={clickedButton}
             />
           </div>
         )}
