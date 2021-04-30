@@ -11,7 +11,7 @@ function App() {
   const [deathsData, setDeathsData] = useState([]);
   const [activeData, setActiveData] = useState([]);
   const [recoveredData, setRecoveredData] = useState([]);
-  const [clickedButton, setClickedButton] = useState("Cases");
+  const [clickedButton, setClickedButton] = useState("Coronavirus Cases");
 
   useEffect(() => {
     async function Fetch() {
@@ -58,7 +58,7 @@ function App() {
 
   const onCases = () => {
     setData(confirmedData);
-    setClickedButton("Cases");
+    setClickedButton("Coronavirus Cases");
   };
 
   const onDeaths = () => {
@@ -80,14 +80,14 @@ function App() {
     if (value == -1) {
       return "No Data";
     }
-    if (clickedButton === "Cases") {
+    if (clickedButton === "Coronavirus Cases") {
       return country + " has " + value + " Cases";
     }
     if (clickedButton === "Deaths") {
       return country + " has " + value + " Deaths ";
     }
     if (clickedButton === "Recovered") {
-      return value + " Recovered cases in " + country;
+      return country + "has" + value + " Recovered  ";
     }
     if (clickedButton === "Active") {
       return country + " has " + value + " Active cases";
@@ -99,7 +99,15 @@ function App() {
     <div>
       <div className={styles.buttons}>
         <div>
-          <button onClick={onCases}>CASES </button>
+          <button
+            style={{
+              backgroundColor:
+                clickedButton == "Coronavirus Cases" ? "red" : "unset",
+            }}
+            onClick={onCases}
+          >
+            CASES{" "}
+          </button>
         </div>
         <div>
           <button onClick={onDeaths}>DEATHS </button>
