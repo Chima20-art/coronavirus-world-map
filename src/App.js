@@ -11,7 +11,9 @@ function App() {
   const [deathsData, setDeathsData] = useState([]);
   const [activeData, setActiveData] = useState([]);
   const [recoveredData, setRecoveredData] = useState([]);
-  const [clickedButton, setClickedButton] = useState("Coronavirus Cases");
+  const [clickedButton, setClickedButton] = useState(
+    "Coronavirus World Map: Cases"
+  );
 
   useEffect(() => {
     async function Fetch() {
@@ -58,38 +60,38 @@ function App() {
 
   const onCases = () => {
     setData(confirmedData);
-    setClickedButton("Coronavirus Cases");
+    setClickedButton("Coronavirus World Map: Cases");
   };
 
   const onDeaths = () => {
     setData(deathsData);
-    setClickedButton("Deaths");
+    setClickedButton("Coronavirus World Map: Deaths");
   };
 
   const onRecovered = () => {
     setData(recoveredData);
-    setClickedButton("Recovered");
+    setClickedButton("Coronavirus World Map: Recovered");
   };
 
   const onActive = () => {
     setData(activeData);
-    setClickedButton("Active");
+    setClickedButton("Coronavirus World Map: Active");
   };
 
   const generateLabel = (country, isoCode, value, prefix, suffix) => {
     if (value == -1) {
       return "No Data";
     }
-    if (clickedButton === "Coronavirus Cases") {
+    if (clickedButton === "Coronavirus World Map: Cases") {
       return country + " has " + value + " Cases";
     }
-    if (clickedButton === "Deaths") {
+    if (clickedButton === "Coronavirus World Map: Deaths") {
       return country + " has " + value + " Deaths ";
     }
-    if (clickedButton === "Recovered") {
+    if (clickedButton === "Coronavirus World Map: Recovered") {
       return country + "has" + value + " Recovered  ";
     }
-    if (clickedButton === "Active") {
+    if (clickedButton === "Coronavirus World Map: Active") {
       return country + " has " + value + " Active cases";
     }
     //return country + " has " + value + " " + clickedButton + " Cases";
@@ -120,8 +122,13 @@ function App() {
               height: "50px",
               borderRadius: "5px",
               backgroundColor:
-                clickedButton === "Coronavirus Cases" ? "black" : "unset",
-              color: clickedButton === "Coronavirus Cases" ? "white" : "unset",
+                clickedButton === "Coronavirus World Map: Cases"
+                  ? "black"
+                  : "unset",
+              color:
+                clickedButton === "Coronavirus World Map: Cases"
+                  ? "white"
+                  : "unset",
             }}
             onClick={onCases}
           >
@@ -134,8 +141,14 @@ function App() {
               width: "10vw",
               height: "50px",
               borderRadius: "5px",
-              backgroundColor: clickedButton === "Deaths" ? "black" : "unset",
-              color: clickedButton === "Deaths" ? "white" : "unset",
+              backgroundColor:
+                clickedButton === "Coronavirus World Map: Deaths"
+                  ? "black"
+                  : "unset",
+              color:
+                clickedButton === "Coronavirus World Map: Deaths"
+                  ? "white"
+                  : "unset",
             }}
             onClick={onDeaths}
           >
@@ -149,8 +162,13 @@ function App() {
               height: "50px",
               borderRadius: "5px",
               backgroundColor:
-                clickedButton === "Recovered" ? "black" : "unset",
-              color: clickedButton === "Recovered" ? "white" : "unset",
+                clickedButton === "Coronavirus World Map: Recovered"
+                  ? "black"
+                  : "unset",
+              color:
+                clickedButton === "Coronavirus World Map: Recovered"
+                  ? "white"
+                  : "unset",
             }}
             onClick={onRecovered}
           >
@@ -163,8 +181,14 @@ function App() {
               width: "10vw",
               height: "50px",
               borderRadius: "5px",
-              backgroundColor: clickedButton === "Active" ? "black" : "unset",
-              color: clickedButton === "Active" ? "white" : "unset",
+              backgroundColor:
+                clickedButton === "Coronavirus World Map: Active"
+                  ? "black"
+                  : "unset",
+              color:
+                clickedButton === "Coronavirus World Map: Active"
+                  ? "white"
+                  : "unset",
             }}
             onClick={onActive}
           >
