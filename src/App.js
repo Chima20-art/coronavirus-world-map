@@ -11,7 +11,7 @@ function App() {
   const [deathsData, setDeathsData] = useState([]);
   const [activeData, setActiveData] = useState([]);
   const [recoveredData, setRecoveredData] = useState([]);
-  const [clickedButton, setClickedButton] = useState("cases");
+  const [clickedButton, setClickedButton] = useState("Cases");
 
   useEffect(() => {
     async function Fetch() {
@@ -58,7 +58,7 @@ function App() {
 
   const onCases = () => {
     setData(confirmedData);
-    setClickedButton("cases");
+    setClickedButton("Cases");
   };
 
   const onDeaths = () => {
@@ -80,7 +80,19 @@ function App() {
     if (value == -1) {
       return "No Data";
     }
-    return country + value;
+    if (clickedButton === "Cases") {
+      return country + " has " + value + " Cases";
+    }
+    if (clickedButton === "Deaths") {
+      return country + " has " + value + " Deaths ";
+    }
+    if (clickedButton === "Recovered") {
+      return value + " Recovered cases in " + country;
+    }
+    if (clickedButton === "Active") {
+      return country + " has " + value + " Active cases";
+    }
+    //return country + " has " + value + " " + clickedButton + " Cases";
   };
 
   return (
