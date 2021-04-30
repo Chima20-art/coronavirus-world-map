@@ -40,10 +40,9 @@ function App() {
           });
           recoveredData.push({
             country: ISO2,
-            value: item.attributes.Recovered,
+            value: item.attributes.Recovered ? item.attributes.Recovered : -1,
           });
         }
-        //console.log(item.attributes);
       });
 
       setData(confirmedData);
@@ -73,6 +72,14 @@ function App() {
     setData(activeData);
   };
 
+  const generateLabel = (country, isoCode, value, prefix, suffix) => {
+    //var newv = parseInt(value);
+    if (value == -1) {
+      return "No Data";
+    }
+    return value;
+  };
+
   return (
     <div>
       <div className={styles.buttons}>
@@ -94,7 +101,12 @@ function App() {
           <h1>loading...</h1>
         ) : (
           <div className={styles.map}>
-            <WorldMap size="responsive" data={data} color="orange" />
+            <WorldMap
+              size="responsive"
+              data={data}
+              color="orange"
+              tooltipTextFunction={generateLabel}
+            />
           </div>
         )}
       </div>
