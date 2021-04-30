@@ -97,10 +97,28 @@ function App() {
 
   return (
     <div>
+      <div>
+        {loading ? (
+          <h1>loading...</h1>
+        ) : (
+          <div className={styles.map}>
+            <WorldMap
+              size="responsive"
+              data={data}
+              color="pink"
+              tooltipTextFunction={generateLabel}
+              title={clickedButton}
+            />
+          </div>
+        )}
+      </div>
       <div className={styles.buttons}>
-        <div>
+        <div className={styles.button}>
           <button
             style={{
+              width: "10vw",
+              height: "50px",
+              borderRadius: "5px",
               backgroundColor:
                 clickedButton === "Coronavirus Cases" ? "black" : "unset",
               color: clickedButton === "Coronavirus Cases" ? "white" : "unset",
@@ -110,9 +128,12 @@ function App() {
             CASES{" "}
           </button>
         </div>
-        <div>
+        <div className={styles.button}>
           <button
             style={{
+              width: "10vw",
+              height: "50px",
+              borderRadius: "5px",
               backgroundColor: clickedButton === "Deaths" ? "black" : "unset",
               color: clickedButton === "Deaths" ? "white" : "unset",
             }}
@@ -121,9 +142,12 @@ function App() {
             DEATHS{" "}
           </button>
         </div>
-        <div>
+        <div className={styles.button}>
           <button
             style={{
+              width: "10vw",
+              height: "50px",
+              borderRadius: "5px",
               backgroundColor:
                 clickedButton === "Recovered" ? "black" : "unset",
               color: clickedButton === "Recovered" ? "white" : "unset",
@@ -133,9 +157,12 @@ function App() {
             RECOVERED{" "}
           </button>
         </div>
-        <div>
+        <div className={styles.button}>
           <button
             style={{
+              width: "10vw",
+              height: "50px",
+              borderRadius: "5px",
               backgroundColor: clickedButton === "Active" ? "black" : "unset",
               color: clickedButton === "Active" ? "white" : "unset",
             }}
@@ -144,21 +171,6 @@ function App() {
             ACTIVE{" "}
           </button>
         </div>
-      </div>
-      <div>
-        {loading ? (
-          <h1>loading...</h1>
-        ) : (
-          <div className={styles.map}>
-            <WorldMap
-              size="responsive"
-              data={data}
-              color="orange"
-              tooltipTextFunction={generateLabel}
-              title={clickedButton}
-            />
-          </div>
-        )}
       </div>
     </div>
   );
