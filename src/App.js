@@ -102,7 +102,8 @@ function App() {
           <button
             style={{
               backgroundColor:
-                clickedButton == "Coronavirus Cases" ? "red" : "unset",
+                clickedButton === "Coronavirus Cases" ? "black" : "unset",
+              color: clickedButton === "Coronavirus Cases" ? "white" : "unset",
             }}
             onClick={onCases}
           >
@@ -110,13 +111,38 @@ function App() {
           </button>
         </div>
         <div>
-          <button onClick={onDeaths}>DEATHS </button>
+          <button
+            style={{
+              backgroundColor: clickedButton === "Deaths" ? "black" : "unset",
+              color: clickedButton === "Deaths" ? "white" : "unset",
+            }}
+            onClick={onDeaths}
+          >
+            DEATHS{" "}
+          </button>
         </div>
         <div>
-          <button onClick={onRecovered}>RECOVERED </button>
+          <button
+            style={{
+              backgroundColor:
+                clickedButton === "Recovered" ? "black" : "unset",
+              color: clickedButton === "Recovered" ? "white" : "unset",
+            }}
+            onClick={onRecovered}
+          >
+            RECOVERED{" "}
+          </button>
         </div>
         <div>
-          <button onClick={onActive}>ACTIVE </button>
+          <button
+            style={{
+              backgroundColor: clickedButton === "Active" ? "black" : "unset",
+              color: clickedButton === "Active" ? "white" : "unset",
+            }}
+            onClick={onActive}
+          >
+            ACTIVE{" "}
+          </button>
         </div>
       </div>
       <div>
