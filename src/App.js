@@ -14,7 +14,7 @@ function App() {
   const [clickedButton, setClickedButton] = useState(
     "Coronavirus World Map: Cases"
   );
-  const [timeStamp, setTimeStamp] = useState([]);
+  const [timeStamp, setTimeStamp] = useState(null);
 
   useEffect(() => {
     async function Fetch() {
@@ -26,15 +26,11 @@ function App() {
       const deathsData = [];
       const activeData = [];
       const recoveredData = [];
-      const timeStamp = [];
 
       response.features.forEach((item) => {
+        setTimeStamp(new Date(item.attributes.Last_Update).toLocaleString());
         var ISO2 = getCountryISO2(item.attributes.ISO3);
         if (ISO2 != undefined || ISO2 != null) {
-          timeStamp.push({
-            country: ISO2,
-            value: item.attributes.Last_Update,
-          });
           confirmedData.push({
             country: ISO2,
             value: item?.attributes?.Confirmed ? item.attributes.Confirmed : -1,
@@ -52,7 +48,6 @@ function App() {
             value: item?.attributes?.Recovered ? item.attributes.Recovered : -1,
           });
         }
-        console.log(timeStamp);
       });
 
       setData(confirmedData);
@@ -84,6 +79,7 @@ function App() {
     setData(activeData);
     setClickedButton("Coronavirus World Map: Active");
   };
+  console.log(timeStamp);
 
   const generateLabel = (country, isoCode, value, prefix, suffix) => {
     if (value == -1) {
@@ -120,6 +116,7 @@ function App() {
                 title={clickedButton}
               />
             </div>
+            <div className={styles.update}>Last update {timeStamp}</div>
             <div className={styles.buttons}>
               <div className={styles.button}>
                 <button
