@@ -116,12 +116,15 @@ function App() {
                 title={clickedButton}
               />
             </div>
-            <div className={styles.update}>Last update {timeStamp}</div>
+            <div className={styles.update}>
+              By Chaimae Michich, last update : {timeStamp}
+            </div>
+
             <div className={styles.buttons}>
               <div className={styles.button}>
                 <button
                   style={{
-                    width: "10vw",
+                    width: "17vw",
                     height: "50px",
                     borderRadius: "5px",
                     backgroundColor:
@@ -141,7 +144,7 @@ function App() {
               <div className={styles.button}>
                 <button
                   style={{
-                    width: "10vw",
+                    width: "17vw",
                     height: "50px",
                     borderRadius: "5px",
                     backgroundColor:
@@ -161,7 +164,7 @@ function App() {
               <div className={styles.button}>
                 <button
                   style={{
-                    width: "10vw",
+                    width: "17vw",
                     height: "50px",
                     borderRadius: "5px",
                     backgroundColor:
@@ -181,7 +184,7 @@ function App() {
               <div className={styles.button}>
                 <button
                   style={{
-                    width: "10vw",
+                    width: "17vw",
                     height: "50px",
                     borderRadius: "5px",
                     backgroundColor:
