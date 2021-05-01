@@ -14,6 +14,7 @@ function App() {
   const [clickedButton, setClickedButton] = useState(
     "Coronavirus World Map: Cases"
   );
+  const [timeStamp, setTimeStamp] = useState([]);
 
   useEffect(() => {
     async function Fetch() {
@@ -25,10 +26,15 @@ function App() {
       const deathsData = [];
       const activeData = [];
       const recoveredData = [];
+      const timeStamp = [];
 
       response.features.forEach((item) => {
         var ISO2 = getCountryISO2(item.attributes.ISO3);
         if (ISO2 != undefined || ISO2 != null) {
+          timeStamp.push({
+            country: ISO2,
+            value: item.attributes.Last_Update,
+          });
           confirmedData.push({
             country: ISO2,
             value: item?.attributes?.Confirmed ? item.attributes.Confirmed : -1,
@@ -46,6 +52,7 @@ function App() {
             value: item?.attributes?.Recovered ? item.attributes.Recovered : -1,
           });
         }
+        console.log(timeStamp);
       });
 
       setData(confirmedData);
@@ -103,98 +110,100 @@ function App() {
         {loading ? (
           <h1>loading...</h1>
         ) : (
-          <div className={styles.map}>
-            <WorldMap
-              size="responsive"
-              data={data}
-              color="pink"
-              tooltipTextFunction={generateLabel}
-              title={clickedButton}
-            />
+          <div>
+            <div className={styles.map}>
+              <WorldMap
+                size="responsive"
+                data={data}
+                color="pink"
+                tooltipTextFunction={generateLabel}
+                title={clickedButton}
+              />
+            </div>
+            <div className={styles.buttons}>
+              <div className={styles.button}>
+                <button
+                  style={{
+                    width: "10vw",
+                    height: "50px",
+                    borderRadius: "5px",
+                    backgroundColor:
+                      clickedButton === "Coronavirus World Map: Cases"
+                        ? "black"
+                        : "unset",
+                    color:
+                      clickedButton === "Coronavirus World Map: Cases"
+                        ? "white"
+                        : "unset",
+                  }}
+                  onClick={onCases}
+                >
+                  CASES{" "}
+                </button>
+              </div>
+              <div className={styles.button}>
+                <button
+                  style={{
+                    width: "10vw",
+                    height: "50px",
+                    borderRadius: "5px",
+                    backgroundColor:
+                      clickedButton === "Coronavirus World Map: Deaths"
+                        ? "black"
+                        : "unset",
+                    color:
+                      clickedButton === "Coronavirus World Map: Deaths"
+                        ? "white"
+                        : "unset",
+                  }}
+                  onClick={onDeaths}
+                >
+                  DEATHS{" "}
+                </button>
+              </div>
+              <div className={styles.button}>
+                <button
+                  style={{
+                    width: "10vw",
+                    height: "50px",
+                    borderRadius: "5px",
+                    backgroundColor:
+                      clickedButton === "Coronavirus World Map: Recovered"
+                        ? "black"
+                        : "unset",
+                    color:
+                      clickedButton === "Coronavirus World Map: Recovered"
+                        ? "white"
+                        : "unset",
+                  }}
+                  onClick={onRecovered}
+                >
+                  RECOVERED{" "}
+                </button>
+              </div>
+              <div className={styles.button}>
+                <button
+                  style={{
+                    width: "10vw",
+                    height: "50px",
+                    borderRadius: "5px",
+                    backgroundColor:
+                      clickedButton === "Coronavirus World Map: Active"
+                        ? "black"
+                        : "unset",
+                    color:
+                      clickedButton === "Coronavirus World Map: Active"
+                        ? "white"
+                        : "unset",
+                  }}
+                  onClick={onActive}
+                >
+                  ACTIVE{" "}
+                </button>
+              </div>
+            </div>
           </div>
         )}
-      </div>
-      <div className={styles.buttons}>
-        <div className={styles.button}>
-          <button
-            style={{
-              width: "10vw",
-              height: "50px",
-              borderRadius: "5px",
-              backgroundColor:
-                clickedButton === "Coronavirus World Map: Cases"
-                  ? "black"
-                  : "unset",
-              color:
-                clickedButton === "Coronavirus World Map: Cases"
-                  ? "white"
-                  : "unset",
-            }}
-            onClick={onCases}
-          >
-            CASES{" "}
-          </button>
-        </div>
-        <div className={styles.button}>
-          <button
-            style={{
-              width: "10vw",
-              height: "50px",
-              borderRadius: "5px",
-              backgroundColor:
-                clickedButton === "Coronavirus World Map: Deaths"
-                  ? "black"
-                  : "unset",
-              color:
-                clickedButton === "Coronavirus World Map: Deaths"
-                  ? "white"
-                  : "unset",
-            }}
-            onClick={onDeaths}
-          >
-            DEATHS{" "}
-          </button>
-        </div>
-        <div className={styles.button}>
-          <button
-            style={{
-              width: "10vw",
-              height: "50px",
-              borderRadius: "5px",
-              backgroundColor:
-                clickedButton === "Coronavirus World Map: Recovered"
-                  ? "black"
-                  : "unset",
-              color:
-                clickedButton === "Coronavirus World Map: Recovered"
-                  ? "white"
-                  : "unset",
-            }}
-            onClick={onRecovered}
-          >
-            RECOVERED{" "}
-          </button>
-        </div>
-        <div className={styles.button}>
-          <button
-            style={{
-              width: "10vw",
-              height: "50px",
-              borderRadius: "5px",
-              backgroundColor:
-                clickedButton === "Coronavirus World Map: Active"
-                  ? "black"
-                  : "unset",
-              color:
-                clickedButton === "Coronavirus World Map: Active"
-                  ? "white"
-                  : "unset",
-            }}
-            onClick={onActive}
-          >
-            ACTIVE{" "}
-          </button>
-        </div>
       </div>
     </div>
   );
