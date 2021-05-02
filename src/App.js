@@ -106,7 +106,7 @@ function App() {
         {loading ? (
           <h1>loading...</h1>
         ) : (
-          <div>
+          <div className={styles.body}>
             <div className={styles.map}>
               <WorldMap
                 size="responsive"
