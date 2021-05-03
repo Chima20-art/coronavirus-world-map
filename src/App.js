@@ -161,6 +161,7 @@ function App() {
                 </div>
                 <div className={styles.button}>
                   <button
+                    className={styles.btn}
                     style={{
                       width: "17vw",
                       height: "50px",
@@ -181,6 +182,7 @@ function App() {
                 </div>
                 <div className={styles.button}>
                   <button
+                    className={styles.btn}
                     style={{
                       width: "17vw",
                       height: "50px",
@@ -201,6 +203,7 @@ function App() {
                 </div>
                 <div className={styles.button}>
                   <button
+                    className={styles.btn}
                     style={{
                       width: "17vw",
                       height: "50px",
