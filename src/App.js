@@ -140,6 +140,7 @@ function App() {
               <div className={styles.buttons}>
                 <div className={styles.button}>
                   <button
+                    className={styles.btn}
                     style={{
                       width: "17vw",
                       height: "50px",
