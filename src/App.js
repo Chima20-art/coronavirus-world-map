@@ -100,6 +100,22 @@ function App() {
     //return country + " has " + value + " " + clickedButton + " Cases";
   };
 
+  const generateColor = (a) => {
+    // eslint-disable-next-line default-case
+    switch (a) {
+      case "Coronavirus World Map: Cases":
+        return "B71C1C";
+      case "Coronavirus World Map: Deaths":
+        return "FF3D00";
+      case "Coronavirus World Map: Recovered":
+        return "00796B";
+      case "Coronavirus World Map: Active":
+        return "FFA726";
+    }
+
+    return "white";
+  };
+
   return (
     <div>
       <div>
@@ -111,95 +127,97 @@ function App() {
               <WorldMap
                 size="responsive"
                 data={data}
-                color="pink"
+                color={generateColor(clickedButton)}
                 tooltipTextFunction={generateLabel}
                 title={clickedButton}
               />
             </div>
-            <div className={styles.update}>
-              By Chaimae Michich, last update : {timeStamp}
-            </div>
+            <div className={styles.content}>
+              <div className={styles.update}>
+                By Chaimae Michich, last update : {timeStamp}
+              </div>
 
-            <div className={styles.buttons}>
-              <div className={styles.button}>
-                <button
-                  style={{
-                    width: "17vw",
-                    height: "50px",
-                    borderRadius: "5px",
-                    backgroundColor:
-                      clickedButton === "Coronavirus World Map: Cases"
-                        ? "black"
-                        : "unset",
-                    color:
-                      clickedButton === "Coronavirus World Map: Cases"
-                        ? "white"
-                        : "unset",
-                  }}
-                  onClick={onCases}
-                >
-                  CASES{" "}
-                </button>
-              </div>
-              <div className={styles.button}>
-                <button
-                  style={{
-                    width: "17vw",
-                    height: "50px",
-                    borderRadius: "5px",
-                    backgroundColor:
-                      clickedButton === "Coronavirus World Map: Deaths"
-                        ? "black"
-                        : "unset",
-                    color:
-                      clickedButton === "Coronavirus World Map: Deaths"
-                        ? "white"
-                        : "unset",
-                  }}
-                  onClick={onDeaths}
-                >
-                  DEATHS{" "}
-                </button>
-              </div>
-              <div className={styles.button}>
-                <button
-                  style={{
-                    width: "17vw",
-                    height: "50px",
-                    borderRadius: "5px",
-                    backgroundColor:
-                      clickedButton === "Coronavirus World Map: Recovered"
-                        ? "black"
-                        : "unset",
-                    color:
-                      clickedButton === "Coronavirus World Map: Recovered"
-                        ? "white"
-                        : "unset",
-                  }}
-                  onClick={onRecovered}
-                >
-                  RECOVERED{" "}
-                </button>
-              </div>
-              <div className={styles.button}>
-                <button
-                  style={{
-                    width: "17vw",
-                    height: "50px",
-                    borderRadius: "5px",
-                    backgroundColor:
-                      clickedButton === "Coronavirus World Map: Active"
-                        ? "black"
-                        : "unset",
-                    color:
-                      clickedButton === "Coronavirus World Map: Active"
-                        ? "white"
-                        : "unset",
-                  }}
-                  onClick={onActive}
-                >
-                  ACTIVE{" "}
-                </button>
+              <div className={styles.buttons}>
+                <div className={styles.button}>
+                  <button
+                    style={{
+                      width: "17vw",
+                      height: "50px",
+                      borderRadius: "5px",
+                      backgroundColor:
+                        clickedButton === "Coronavirus World Map: Cases"
+                          ? "black"
+                          : "unset",
+                      color:
+                        clickedButton === "Coronavirus World Map: Cases"
+                          ? "white"
+                          : "unset",
+                    }}
+                    onClick={onCases}
+                  >
+                    CASES{" "}
+                  </button>
+                </div>
+                <div className={styles.button}>
+                  <button
+                    style={{
+                      width: "17vw",
+                      height: "50px",
+                      borderRadius: "5px",
+                      backgroundColor:
+                        clickedButton === "Coronavirus World Map: Deaths"
+                          ? "black"
+                          : "unset",
+                      color:
+                        clickedButton === "Coronavirus World Map: Deaths"
+                          ? "white"
+                          : "unset",
+                    }}
+                    onClick={onDeaths}
+                  >
+                    DEATHS{" "}
+                  </button>
+                </div>
+                <div className={styles.button}>
+                  <button
+                    style={{
+                      width: "17vw",
+                      height: "50px",
+                      borderRadius: "5px",
+                      backgroundColor:
+                        clickedButton === "Coronavirus World Map: Recovered"
+                          ? "black"
+                          : "unset",
+                      color:
+                        clickedButton === "Coronavirus World Map: Recovered"
+                          ? "white"
+                          : "unset",
+                    }}
+                    onClick={onRecovered}
+                  >
+                    RECOVERED{" "}
+                  </button>
+                </div>
+                <div className={styles.button}>
+                  <button
+                    style={{
+                      width: "17vw",
+                      height: "50px",
+                      borderRadius: "5px",
+                      backgroundColor:
+                        clickedButton === "Coronavirus World Map: Active"
+                          ? "black"
+                          : "unset",
+                      color:
+                        clickedButton === "Coronavirus World Map: Active"
+                          ? "white"
+                          : "unset",
+                    }}
+                    onClick={onActive}
+                  >
+                    ACTIVE{" "}
+                  </button>
+                </div>
               </div>
             </div>
           </div>
