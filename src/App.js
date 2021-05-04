@@ -92,7 +92,7 @@ function App() {
       return country + " has " + value + " Deaths ";
     }
     if (clickedButton === "Coronavirus World Map: Recovered") {
-      return country + "has" + value + " Recovered  ";
+      return country + " has " + value + " Recovered  ";
     }
     if (clickedButton === "Coronavirus World Map: Active") {
       return country + " has " + value + " Active cases";
